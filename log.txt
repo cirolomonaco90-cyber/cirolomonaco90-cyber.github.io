@@ -1,0 +1,27 @@
+Espansioni: 859; immagini CardTrader: 68084 (Cardmarket), 46276 (TCGplayer)
+Esempio di blueprint: campi id, name, version, game_id, category_id, expansion_id, fixed_properties, editable_properties, card_market_ids, tcg_player_id, scryfall_id, image_url, image, back_image; immagine "https://cardtrader.com/uploads/blueprints/image/273488/preview_zapdos-cosmos-holo-15-62-wotc-employees-only-1999-wizards-theme-deck-blisters-exclusives.jpg"
+Immagini di riserva: 21328 carte su 21393 (pokemontcg.io 20510, TCGplayer 762, CardTrader 49, stessa illustrazione 7; con alternative 761)
+Ancora senza immagine di riserva: 2019sm-fr (41), 2013bw (12), tk-xy-n (5), tk-xy-sy (3), bw6 (2), 2018sm-fr (1), det1 (1)
+Set senza corrispondenza: ex5.5 (Poké Card Creator Pack, 5), exu (Unseen Forces Unown Collection, 28), 2013bw (, 12), 2018sm-fr (, 40), 2019sm-fr (, 41), 2023sv (McDonald's Collection 2023, 15), 2024sv (McDonald's Collection 2024, 15), mep (MEP Black Star Promos, 112), mee (Mega Evolution Energy, 16), miscp (Miscellaneous Promos, 1), mfb (My First Battle, 34), tk-bw-e (BW trainer Kit (Excadrill), 30), tk-bw-z (BW trainer Kit (Zoroark), 30), tk-dp-l (DP trainer Kit (Lucario), 11), tk-dp-m (DP trainer Kit (Manaphy), 12), tk-hs-g (HS trainer Kit (Gyarados), 30), tk-hs-r (HS trainer Kit (Raichu), 30), tk-sm-r (SM trainer Kit (Alolan Raichu), 30), tk-sm-l (SM trainer Kit (Lycanroc), 18), tk-xy-b (XY trainer Kit (Bisharp), 30), tk-xy-latia (XY trainer Kit (Latias), 30), tk-xy-latio (XY trainer Kit (Latios), 30), tk-xy-n (XY trainer Kit (Noivern), 30), tk-xy-p (XY trainer Kit (Pikachu Libre), 30), tk-xy-su (XY trainer Kit (Suicune), 30), tk-xy-sy (XY trainer Kit (Sylveon), 30), tk-xy-w (XY trainer Kit (Wigglytuff), 30), xya (Yellow A Alternate, 6)
+Immagini TCGplayer/CardTrader controllate: 811; passate alla fonte successiva: 160; senza nessuna immagine valida: 0
+Controllo immagini:
+200 image/jpeg 9567 https://www.cardtrader.com/uploads/blueprints/image/123048/preview_pansage-non-holo-promo-1-40-mcdonald-s-collection-2018-french.jpg
+200 image/jpeg 10690 https://www.cardtrader.com/uploads/blueprints/image/123066/preview_psyduck-non-holo-promo-10-40-mcdonald-s-collection-2018-french.jpg
+200 image/jpeg 10286 https://www.cardtrader.com/uploads/blueprints/image/123068/preview_poliwag-non-holo-promo-11-40-mcdonald-s-collection-2018-french.jpg
+200 image/jpeg 10695 https://www.cardtrader.com/uploads/blueprints/image/123070/preview_delibird-non-holo-promo-12-40-mcdonald-s-collection-2018-french.jpg
+200 image/jpeg 20090 https://tcgplayer-cdn.tcgplayer.com/product/656260_200w.jpg
+200 image/jpeg 84904 https://tcgplayer-cdn.tcgplayer.com/product/656260_in_1000x1000.jpg
+200 image/jpeg 16050 https://tcgplayer-cdn.tcgplayer.com/product/97982_200w.jpg
+200 image/jpeg 8950 https://tcgplayer-cdn.tcgplayer.com/product/97982_in_1000x1000.jpg
+200 image/jpeg 15984 https://tcgplayer-cdn.tcgplayer.com/product/614379_200w.jpg
+200 image/jpeg 199555 https://tcgplayer-cdn.tcgplayer.com/product/614379_in_1000x1000.jpg
+200 image/jpeg 23722 https://tcgplayer-cdn.tcgplayer.com/product/524082_200w.jpg
+200 image/jpeg 145929 https://tcgplayer-cdn.tcgplayer.com/product/524082_in_1000x1000.jpg
+200 image/png 58055 https://images.scrydex.com/pokemon/me55-121/small
+200 image/png 57735 https://images.scrydex.com/pokemon/me3-22/small
+200 image/png 49345 https://images.scrydex.com/pokemon/me5-48/small
+200 image/png 49516 https://images.scrydex.com/pokemon/me2pt5-270/small
+200 image/png 166912 https://images.pokemontcg.io/swsh12tg/TG11.png
+200 image/png 172168 https://images.pokemontcg.io/sv6/116.png
+200 image/png 158252 https://images.pokemontcg.io/neo4/111.png
+200 image/png 180911 https://images.pokemontcg.io/dpp/DP20.png
