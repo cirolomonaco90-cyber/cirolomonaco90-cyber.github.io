@@ -1,0 +1,25 @@
+Espansioni Pokémon su CardTrader: 860
+Categorie dei blueprint (id: quantità): 69: 435, 59: 379, 60: 684, 68: 278, 61: 614, 62: 404, 63: 219, 64: 152, 65: 150, 86: 72, 66: 377, 118: 233, 78: 338, 190: 152, 73: 63183, 67: 327, 74: 51, 136: 12, 318: 1; carte singole = 73
+Espansioni con carte collegate a Cardmarket: 762, prodotti: 63215
+en: 25326 prodotti con offerte (riferimento)
+it: 22420 prodotti con offerte, rapporto con l'inglese 72% su 13948 carte (almeno 15 offerte)
+fr: 8547 prodotti con offerte, rapporto con l'inglese 146% su 306 carte (almeno 5 offerte)
+de: 14307 prodotti con offerte, rapporto con l'inglese 127% su 1659 carte (almeno 8 offerte)
+es: 11711 prodotti con offerte, rapporto con l'inglese 118% su 691 carte (almeno 8 offerte)
+pt: 1036 prodotti con offerte, rapporto con l'inglese 215% su 40 carte (almeno 3 offerte)
+Sigillati su CardTrader: 4878 blueprint collegati a Cardmarket, 31 espansioni in più da leggere
+One Piece: 95 espansioni con carte, 7868 carte
+One Piece en: 6945 carte con offerte
+One Piece jp: 4827 carte con offerte
+One Piece gradate: 1776 carte di valore lette, 496 con offerte gradate riconoscibili
+One Piece Sealed su CardTrader: 650 blueprint collegati a Cardmarket
+One Piece Sigillati doppi senza prezzo né foto tolti: 1
+One Piece Sigillati solo su CardTrader: 0
+One Piece Sigillati: 624 prodotti (151 asiatici), 597 con prezzo Cardmarket, 310 con offerte CardTrader, 414 con foto, 598 con il nome dell'espansione
+Sigillati doppi senza prezzo né foto tolti: 55
+Sigillati solo su CardTrader: 2187 (59 doppioni di prodotti Cardmarket scartati)
+Foto TCGplayer per i sigillati senza foto: 133 (restano senza 1538)
+Prezzo TCGplayer per i sigillati senza prezzo: 28 (restano senza 2342)
+Rapporto sigillati lingua/inglese: it 68% (174 prodotti), fr 100% (83 prodotti), de 88% (88 prodotti), es 78% (191 prodotti), pt 215% (dalle carte)
+Sigillati: 6488 prodotti (1226 asiatici), 3736 con prezzo Cardmarket, 1161 con offerte CardTrader, 4950 con foto, 6354 con il nome dell'espansione
+Fatto in 0 minuti, 4 chiamate a CardTrader, 8148 risposte dalla cache.
