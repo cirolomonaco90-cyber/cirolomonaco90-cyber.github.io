@@ -1,0 +1,121 @@
+name: Dati notturni
+
+# Ogni notte, nella nuvola di GitHub (non serve il Mac): scripts/job-notte.sh carica su Supabase prezzi per
+# lingua, cataloghi (TCGplayer, One Piece, sigillati, oggetti), date dei set e correzioni Cardmarket;
+# il lunedì anche immagini di riserva e carte dei set asiatici. Le tre parti girano in parallelo.
+# Ripresa: la cartella ~/.collectorone (risposte CardTrader del giorno, carte TCGdex) resta nella cache di
+# Actions: se un job si ferma, "Re-run" lo stesso giorno continua da dove era arrivato.
+# Secret del repo (Settings > Secrets and variables > Actions): CARDTRADER_TOKEN, SUPABASE_SECRET_KEY,
+# EBAY_APP_ID, EBAY_CERT_ID (oggetti da collezione; senza, restano col solo listino).
+# Esito di ogni parte: https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/stato/<parte>.json
+# (lo scrive lo script anche in caso di errore). GitHub manda un'email ai fallimenti (impostazioni account).
+
+on:
+  schedule:
+    - cron: "17 2 * * *" # 02:17 UTC, ogni giorno
+  workflow_dispatch:
+    inputs:
+      parte:
+        description: "Quale parte far girare"
+        type: choice
+        options: [tutte, prezzi, cardmarket, immagini]
+        default: tutte
+      prova:
+        description: "Prova veloce: poche espansioni e non carica nulla"
+        type: boolean
+        default: false
+
+concurrency:
+  group: dati-notturni
+  cancel-in-progress: false
+
+env:
+  CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+  GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+  SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+  EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+  EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+  # Prova: 3 espansioni e nessun caricamento.
+  MAX_EXPANSIONS: ${{ inputs.prova && '3' || '' }}
+  SENZA_CARICARE: ${{ inputs.prova && '1' || '' }}
+
+jobs:
+  prezzi:
+    if: ${{ github.event_name == 'schedule' || inputs.parte == 'tutte' || inputs.parte == 'prezzi' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: oggi
+        run: echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+      - name: Memoria del job (ripresa dello stesso giorno, date dei set)
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.collectorone
+          key: prezzi-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            prezzi-${{ steps.oggi.outputs.data }}-
+            prezzi-
+      - name: Prezzi, cataloghi, date dei set
+        run: bash scripts/job-notte.sh prezzi
+      - name: Salva la memoria del job
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.collectorone
+          key: prezzi-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  cardmarket:
+    if: ${{ github.event_name == 'schedule' || inputs.parte == 'tutte' || inputs.parte == 'cardmarket' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: oggi
+        run: echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+      - name: Memoria del job (carte TCGdex, ripresa dello stesso giorno)
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.collectorone
+          key: cardmarket-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            cardmarket-${{ steps.oggi.outputs.data }}-
+            cardmarket-
+      - name: Correzioni Cardmarket
+        run: bash scripts/job-notte.sh cardmarket
+      - name: Salva la memoria del job
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.collectorone
+          key: cardmarket-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  immagini:
+    # Il lunedì (o a richiesta): immagini di riserva e carte dei set asiatici.
+    if: ${{ github.event_name == 'schedule' || inputs.parte == 'tutte' || inputs.parte == 'immagini' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Solo il lunedì se parte da sola
+        id: giorno
+        run: |
+          if [ "${{ github.event_name }}" = schedule ] && [ "$(date -u +%u)" != 1 ]; then echo "salta=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Immagini di riserva e set asiatici
+        if: steps.giorno.outputs.salta != '1' && inputs.prova != true
+        run: bash scripts/job-notte.sh immagini

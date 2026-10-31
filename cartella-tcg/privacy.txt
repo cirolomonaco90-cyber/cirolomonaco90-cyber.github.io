@@ -1,0 +1,110 @@
+CollectorOne
+
+INFORMATIVA SULLA PRIVACY
+=========================
+
+Ultimo aggiornamento: 28 ottobre 2026
+CollectorOne è un'app per gestire collezioni di carte Pokémon e One Piece. Questa pagina spiega quali dati usa l'app e perché. In breve: niente pubblicità, niente tracciamento, nessun dato venduto a nessuno.
+
+Senza account
+-------------
+Puoi usare CollectorOne senza accedere. Collezione, impostazioni e storico del valore restano solo sul tuo telefono.
+
+Con un account (facoltativo)
+----------------------------
+Se accedi con Google o con Apple per salvare la collezione online, conserviamo:
+
+- l'identificativo dell'account, il nome e l'indirizzo email forniti da Google o da Apple (con Apple puoi nascondere la tua email vera);
+- le carte della collezione (carta, lingua, condizione, variante, quantità, voto, prezzi), lo storico giornaliero del valore e i tuoi progressi (trofei, missioni, serie di accessi, tema scelto);
+- se usi gli inviti: il tuo codice invito, chi ti ha invitato, i giorni di Pro ricevuti in regalo e, per la classifica tra amici, nome di battesimo, numero di carte, set completati e livello, visibili solo agli amici collegati a te da un invito.
+
+Questi dati sono conservati sui server Supabase nell'Unione Europea (Francoforte) e ogni utente può accedere solo ai propri. Servono solo a sincronizzare la collezione tra i dispositivi.
+
+Fotocamera
+----------
+La scansione delle carte usa la fotocamera solo mentre stai scansionando. Il riconoscimento del testo avviene sul telefono: le foto non vengono mai inviate (su Android l'ultima scansione resta solo nella memoria temporanea dell'app sul telefono, sostituita dalla successiva).
+
+Servizi contattati dall'app
+---------------------------
+
+- TCGdex: dati e immagini delle carte.
+- Supabase: file dei prezzi aggiornati ogni notte.
+- CardTrader: immagini delle carte One Piece.
+- Il nostro servizio dei prezzi gradati (Supabase): riceve solo il numero di prodotto della carta, per restituire i prezzi delle carte gradate.
+
+Queste richieste non contengono dati personali.
+
+Acquisti
+--------
+CollectorOne Pro si compra tramite l'App Store o Google Play. I pagamenti sono gestiti interamente da Apple o Google: non vediamo mai i tuoi dati di pagamento. L'app chiede allo store soltanto se Pro è attivo.
+
+Link esterni e di affiliazione
+------------------------------
+I pulsanti verso eBay, Cardmarket e CardTrader aprono quei siti, che hanno le proprie informative. Alcuni di questi link possono essere di affiliazione: se compri dopo averli aperti, CollectorOne può ricevere una piccola commissione, senza costi in più per te. L'app non condivide i tuoi dati con questi siti.
+
+I tuoi diritti
+--------------
+Puoi eliminare le carte dalla collezione in qualsiasi momento. Nelle impostazioni puoi uscire dall'account oppure eliminarlo: l'account e tutti i dati salvati online vengono cancellati subito (la collezione sul telefono resta). Per qualsiasi altra richiesta prevista dal GDPR (accesso, rettifica, cancellazione), scrivi all'indirizzo email qui sotto.
+
+Minori
+------
+CollectorOne non è rivolta a minori di 13 anni e non raccoglie consapevolmente i loro dati.
+
+Contatti
+--------
+Email: collectorone.support@gmail.com
+
+
+PRIVACY POLICY
+==============
+
+Last updated: 28 October 2026
+CollectorOne is an app for tracking Pokémon and One Piece trading card collections. This page explains what data the app uses and why. In short: no ads, no tracking, no data sold to anyone.
+
+Without an account
+------------------
+You can use CollectorOne without signing in. Your collection, settings and value history are stored only on your phone.
+
+With an account (optional)
+--------------------------
+If you sign in with Google or Apple to save your collection online, we store:
+
+- your account identifier, your name and the email address provided by Google or Apple (with Apple you can hide your real email);
+- the cards in your collection (card, language, condition, variant, quantity, grade, prices), the daily value history and your progress (trophies, missions, check-in streak, chosen theme);
+- if you use invites: your invite code, who invited you, Pro days received as a gift and, for the friends leaderboard, your first name, number of cards, completed sets and level, visible only to friends linked to you by an invite.
+
+This data is kept on Supabase servers in the European Union (Frankfurt) and each user can only access their own data. It is used only to sync your collection across devices.
+
+Camera
+------
+Card scanning uses the camera only while you are scanning. Text recognition runs on your phone; photos are never uploaded (on Android the last scan stays only in the app's temporary storage on your phone, replaced by the next one).
+
+Services the app contacts
+-------------------------
+
+- TCGdex: card data and images.
+- Supabase: price files updated every night.
+- CardTrader: One Piece card images.
+- Our graded price service (Supabase): receives only the product number of the card, to return graded card prices.
+
+These requests contain no personal data.
+
+Purchases
+---------
+CollectorOne Pro is bought through the App Store or Google Play. Payments are handled entirely by Apple or Google: we never see your payment details. The app only checks with the store whether Pro is active.
+
+External links and affiliate links
+----------------------------------
+Buttons to eBay, Cardmarket and CardTrader open those websites, which have their own privacy policies. Some of these links may be affiliate links: if you buy something after opening them, CollectorOne may earn a small commission at no extra cost to you. The app does not share your data with these sites.
+
+Your rights
+-----------
+You can delete cards from your collection at any time. In the settings you can sign out, or delete your online account: this immediately erases the account and all the data saved online (the collection on your phone stays). For any other request under the GDPR (access, correction, deletion), write to the email address below.
+
+Children
+--------
+CollectorOne is not directed at children under 13 and does not knowingly collect their data.
+
+Contact
+-------
+Email: collectorone.support@gmail.com

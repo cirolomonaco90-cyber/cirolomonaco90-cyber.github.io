@@ -1,0 +1,465 @@
+{
+  "exp": "Poste Italiane · Zecca dello Stato",
+  "oggetti": [
+    {
+      "id": 1,
+      "n": "Poké Ball con medaglia d'argento Pikachu (Poste Italiane · IPZS)",
+      "d": "2025-10-08",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/pokeball-argento.jpg",
+      "listino": 200,
+      "note": "Medaglia in argento 925‰ (18 g, 32 mm) coniata dall'Istituto Poligrafico e Zecca dello Stato, in cofanetto a forma di Poké Ball in similpelle con velluto rosso; certificato di garanzia IPZS e carte valori postali della Giornata della Filatelia dedicata a Pikachu. Tiratura limitata (circa 10.000), prenotabile negli uffici postali dall'8 ottobre 2025.",
+      "ebay": {
+        "q": "pokeball medaglia argento pikachu poste italiane",
+        "must": [
+          "pokeball|poké ball|poke ball|pokè ball",
+          "pikachu",
+          "argento"
+        ],
+        "no": [
+          "oro"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "n": "Poké Ball con medaglia d'oro Pikachu (Poste Italiane · IPZS)",
+      "d": "2025-10-08",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/pokeball-oro.jpg",
+      "listino": 2000,
+      "note": "Medaglia in oro 917‰ (10 g, 22 mm) coniata dall'Istituto Poligrafico e Zecca dello Stato, in cofanetto a forma di Poké Ball in similpelle con velluto nero; certificato di garanzia IPZS e carte valori postali della Giornata della Filatelia dedicata a Pikachu. Tiratura limitata (circa 1.025), prenotabile negli uffici postali dall'8 ottobre 2025.",
+      "ebay": {
+        "q": "pokeball medaglia oro pikachu poste italiane",
+        "must": [
+          "pokeball|poké ball|poke ball|pokè ball",
+          "pikachu",
+          "oro"
+        ],
+        "no": [
+          "argento"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "n": "Folder Pokémon Roma 2021 (Poste Italiane)",
+      "d": "2021-10-29",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-roma-2021.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Bulbasaur, Charmander e Squirtle nella città di Roma; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. Venduto in anteprima a Lucca Comics & Games 2021, poi dal 5 novembre 2021.",
+      "ebay": {
+        "q": "folder pokemon Roma poste italiane",
+        "must": [
+          "folder",
+          "roma",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "n": "Folder Pokémon Firenze 2021 (Poste Italiane)",
+      "d": "2021-10-29",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-firenze-2021.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Rowlet, Litten e Popplio nella città di Firenze; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. Venduto in anteprima a Lucca Comics & Games 2021, poi dal 5 novembre 2021.",
+      "ebay": {
+        "q": "folder pokemon Firenze poste italiane",
+        "must": [
+          "folder",
+          "firenze",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "n": "Folder Pokémon Napoli 2021 (Poste Italiane)",
+      "d": "2021-10-29",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-napoli-2021.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Turtwig, Chimchar e Piplup nella città di Napoli; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. Venduto in anteprima a Lucca Comics & Games 2021, poi dal 5 novembre 2021.",
+      "ebay": {
+        "q": "folder pokemon Napoli poste italiane",
+        "must": [
+          "folder",
+          "napoli",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "n": "Folder Pokémon Milano 2021 (Poste Italiane)",
+      "d": "2021-10-29",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-milano-2021.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Snivy, Tepig e Oshawott nella città di Milano; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. Venduto in anteprima a Lucca Comics & Games 2021, poi dal 5 novembre 2021.",
+      "ebay": {
+        "q": "folder pokemon Milano poste italiane",
+        "must": [
+          "folder",
+          "milano",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "n": "Folder Pokémon Palermo 2022 (Poste Italiane)",
+      "d": "2022-02-26",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-palermo-2022.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Chikorita, Cyndaquil e Totodile nella città di Palermo; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. In vendita dal 26 febbraio 2022 per il Pokémon Day.",
+      "ebay": {
+        "q": "folder pokemon Palermo poste italiane",
+        "must": [
+          "folder",
+          "palermo",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "n": "Folder Pokémon Bologna 2022 (Poste Italiane)",
+      "d": "2022-02-26",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-bologna-2022.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Chespin, Fennekin e Froakie nella città di Bologna; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. In vendita dal 26 febbraio 2022 per il Pokémon Day.",
+      "ebay": {
+        "q": "folder pokemon Bologna poste italiane",
+        "must": [
+          "folder",
+          "bologna",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "n": "Folder Pokémon Torino 2022 (Poste Italiane)",
+      "d": "2022-02-26",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-torino-2022.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Grookey, Scorbunny e Sobble nella città di Torino; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. In vendita dal 26 febbraio 2022 per il Pokémon Day.",
+      "ebay": {
+        "q": "folder pokemon Torino poste italiane",
+        "must": [
+          "folder",
+          "torino",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "n": "Folder Pokémon Venezia 2022 (Poste Italiane)",
+      "d": "2022-02-26",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-venezia-2022.jpg",
+      "listino": 12,
+      "note": "Folder filatelico A4 orizzontale a 2 ante con Pikachu, Treecko, Torchic e Mudkip nella città di Venezia; con tessera filatelica e cartolina con annullo. Tiratura 2.000 esemplari, prezzo di listino 12 €. In vendita dal 26 febbraio 2022 per il Pokémon Day.",
+      "ebay": {
+        "q": "folder pokemon Venezia poste italiane",
+        "must": [
+          "folder",
+          "venezia",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "n": "Cartella filatelica Pokémon «Anime in Mostra» 2023 (Poste Italiane)",
+      "d": "2023-02-27",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/cartella-2023.jpg",
+      "listino": null,
+      "note": "Cartella numerata a tiratura limitata con litografia Pokémon (25° anniversario), cartella con litografia Mew, cartolina litografia Pikachu Fonografo, cartolina «Disegna il tuo Pokémon preferito» e tagliacarte. Presentata il 27 febbraio 2023 (Pokémon Day) alla mostra «Anime in Mostra» di Milano, poi negli spazi filatelici dal 3 aprile 2023. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "cartella filatelica pokemon anime in mostra poste litografia",
+        "must": [
+          "pokemon|pokémon",
+          "litografia|anime in mostra|cartella"
+        ],
+        "no": [
+          "folder"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "n": "Francobollo Pikachu · Giornata della Filatelia 2024 (Poste Italiane)",
+      "d": "2024-10-30",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/francobollo-pikachu-2024.jpg",
+      "listino": 1.25,
+      "note": "Francobollo autoadesivo ordinario (48×40 mm, tariffa B) con Pikachu in cornice blu, serie «Il patrimonio artistico e culturale italiano», stampato in rotocalcografia dall'IPZS. Emesso il 30 ottobre 2024, tiratura 524.024 esemplari.",
+      "ebay": {
+        "q": "francobollo pikachu poste italiane 2024",
+        "must": [
+          "francobollo",
+          "pikachu"
+        ],
+        "no": [
+          "foglio",
+          "folder",
+          "28",
+          "minifoglio",
+          "tessera"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "n": "Foglio da 28 francobolli Pikachu · Giornata della Filatelia 2024 (Poste Italiane)",
+      "d": "2024-10-30",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/foglio-pikachu-2024.jpg",
+      "listino": 35,
+      "note": "Foglio intero da 28 francobolli Pikachu della Giornata della Filatelia 2024 (28 × 1,25 €). Emesso il 30 ottobre 2024.",
+      "ebay": {
+        "q": "foglio 28 francobolli pikachu poste italiane",
+        "must": [
+          "pikachu",
+          "foglio|minifoglio|28"
+        ],
+        "no": [
+          "folder"
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "n": "Folder «Il mondo dei Pokémon» 2024 (Poste Italiane)",
+      "d": "2024-10-30",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-mondo-2024.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 4 ante della Giornata della Filatelia 2024 con Pikachu, Bulbasaur, Charmander e Squirtle e il francobollo Pikachu. Presentato a Lucca Comics & Games il 30 ottobre 2024. Tiratura 15.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder il mondo dei pokemon poste italiane 2024",
+        "must": [
+          "folder",
+          "mondo dei pokemon|mondo dei pokémon"
+        ],
+        "no": [
+          "regione",
+          "serie completa",
+          "lotto"
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "n": "Folder Pokémon «Regione di Kanto» (Poste Italiane)",
+      "d": "2025-01-01",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-kanto-2024.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Bulbasaur, Charmander e Squirtle e il francobollo Pikachu; anteprima a Lucca Comics & Games 2024, in vendita da gennaio 2025, poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Kanto poste italiane",
+        "must": [
+          "folder",
+          "kanto",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "n": "Folder Pokémon «Regione di Johto» (Poste Italiane)",
+      "d": "2024-12-14",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-johto-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Chikorita, Cyndaquil e Totodile e il francobollo Pikachu; anteprima a Xmas Games 2024 (14-15 dicembre 2024), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Johto poste italiane",
+        "must": [
+          "folder",
+          "johto",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "n": "Folder Pokémon «Regione di Hoenn» (Poste Italiane)",
+      "d": "2025-01-16",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-hoenn-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Treecko, Torchic e Mudkip e il francobollo Pikachu; anteprima a Umbriacon 2025 (16-19 gennaio 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Hoenn poste italiane",
+        "must": [
+          "folder",
+          "hoenn",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "n": "Folder Pokémon «Regione di Sinnoh» (Poste Italiane)",
+      "d": "2025-03-01",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-sinnoh-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Turtwig, Chimchar e Piplup e il francobollo Pikachu; anteprima a Megacon Genova 2025 (1-2 marzo 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Sinnoh poste italiane",
+        "must": [
+          "folder",
+          "sinnoh",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "n": "Folder Pokémon «Regione di Unima» (Poste Italiane)",
+      "d": "2025-03-22",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-unima-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Snivy, Tepig e Oshawott e il francobollo Pikachu; anteprima a Gardacon 2025 (22-23 marzo 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Unima poste italiane",
+        "must": [
+          "folder",
+          "unima",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "n": "Folder Pokémon «Regione di Kalos» (Poste Italiane)",
+      "d": "2025-04-03",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-kalos-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Chespin, Fennekin e Froakie e il francobollo Pikachu; anteprima a Romics 2025 (3-6 aprile 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Kalos poste italiane",
+        "must": [
+          "folder",
+          "kalos",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "n": "Folder Pokémon «Regione di Alola» (Poste Italiane)",
+      "d": "2025-05-01",
+      "img": "https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/immagini/oggetti/folder-alola-2025.jpg",
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Rowlet, Litten e Popplio e il francobollo Pikachu; anteprima a COMICON Napoli 2025 (1-4 maggio 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Alola poste italiane",
+        "must": [
+          "folder",
+          "alola",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "n": "Folder Pokémon «Regione di Galar» (Poste Italiane)",
+      "d": "2025-05-30",
+      "img": null,
+      "listino": null,
+      "note": "Folder A4 verticale a 3 ante della collana «Il mondo dei Pokémon» con Pikachu, Grookey, Scorbunny e Sobble e il francobollo Pikachu; anteprima a Etna Comics 2025 (30 maggio-2 giugno 2025), poi negli spazi filatelici e su filatelia.poste.it. Tiratura 5.000 esemplari. Prezzo di listino non confermato da fonti ufficiali.",
+      "ebay": {
+        "q": "folder pokemon regione di Galar poste italiane",
+        "must": [
+          "folder",
+          "galar",
+          "pokemon|pokémon"
+        ],
+        "no": [
+          "serie completa",
+          "lotto",
+          "set completo",
+          "+"
+        ]
+      }
+    }
+  ]
+}

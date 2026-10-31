@@ -1,0 +1,37 @@
+name: Esplora CardTrader
+
+# Solo a mano: stampa nel log com'è fatto un gioco su CardTrader (per preparare i prezzi
+# di un nuovo gioco). Non scrive niente.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  esplora:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Carte gradate (offerte con ente e voto)
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+        run: node prezzi/src/esplora-gradate2.js
+      - name: Catalogo One Piece (solo questo, per prova)
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            import { CardTrader } from './prezzi/src/cardtrader.js';
+            import { buildOnePiece } from './prezzi/src/onepiece.js';
+            const { data, log } = await buildOnePiece({ ct: new CardTrader({ token: process.env.CARDTRADER_TOKEN }) });
+            log.forEach((l) => console.log(l));
+            fs.writeFileSync('onepiece.json', JSON.stringify(data));
+          "
+      - uses: actions/upload-artifact@v4
+        with:
+          name: onepiece
+          path: onepiece.json
