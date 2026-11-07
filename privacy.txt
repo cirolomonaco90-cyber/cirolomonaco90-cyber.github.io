@@ -1,0 +1,120 @@
+CollectorOne
+
+INFORMATIVA SULLA PRIVACY
+=========================
+
+Ultimo aggiornamento: 5 novembre 2026
+CollectorOne è un'app per gestire collezioni di carte Pokémon, One Piece, Lorcana, Dragon Ball e Yu-Gi-Oh!. Questa pagina spiega quali dati usa l'app e perché. In breve: niente pubblicità, niente tracciamento, nessun dato venduto a nessuno.
+
+Senza account
+-------------
+Puoi usare CollectorOne senza accedere. Collezione, impostazioni e storico del valore restano solo sul tuo telefono.
+
+Con un account (facoltativo)
+----------------------------
+Se accedi con Google o con Apple per salvare la collezione online, conserviamo:
+
+- l'identificativo dell'account, il nome e l'indirizzo email forniti da Google o da Apple (con Apple puoi nascondere la tua email vera);
+- le carte della collezione (carta, lingua, condizione, variante, quantità, voto, prezzi), lo storico giornaliero del valore e i tuoi progressi (trofei, missioni, serie di accessi, tema scelto);
+- se usi gli inviti: il tuo codice invito, chi ti ha invitato, i giorni di Pro ricevuti in regalo e, per la classifica tra amici, nome di battesimo, numero di carte, set completati e livello, visibili solo agli amici collegati a te da un invito.
+
+Questi dati sono conservati sui server Supabase nell'Unione Europea (Francoforte) e ogni utente può accedere solo ai propri. Servono solo a sincronizzare la collezione tra i dispositivi.
+
+Fotocamera e scansione delle carte
+----------------------------------
+La scansione usa la fotocamera solo mentre stai scansionando. Con "Testo" e "Confronto foto" tutto avviene sul telefono e la foto non viene mai inviata. Con "AI" la foto ritagliata della carta va al nostro servizio di scansione (Supabase), che la fa leggere a Claude (Anthropic): la foto non viene conservata, né da noi né per addestrare modelli; per il limite giornaliero il servizio tiene solo un codice casuale dell'app e l'ora di ogni scansione. Su Android l'ultima scansione resta solo nella memoria temporanea dell'app, sostituita dalla successiva.
+
+Servizi contattati dall'app
+---------------------------
+
+- TCGdex: dati e immagini delle carte.
+- Supabase: file dei prezzi aggiornati ogni notte.
+- CardTrader: immagini delle carte One Piece, Lorcana, Dragon Ball e Yu-Gi-Oh!.
+- Il nostro servizio dei prezzi gradati (Supabase): riceve solo il numero di prodotto della carta, per restituire i prezzi delle carte gradate.
+- Il nostro servizio delle foto delle varianti (Supabase, Browse API di eBay): riceve solo nome, numero e variante della carta.
+
+Queste richieste non contengono dati personali.
+
+Acquisti
+--------
+CollectorOne Pro si compra tramite l'App Store o Google Play. I pagamenti sono gestiti interamente da Apple o Google: non vediamo mai i tuoi dati di pagamento. L'app chiede allo store soltanto se Pro è attivo.
+
+Link esterni e di affiliazione
+------------------------------
+I pulsanti verso eBay, Cardmarket e CardTrader aprono quei siti, che hanno le proprie informative. Alcuni di questi link possono essere di affiliazione: se compri dopo averli aperti, CollectorOne può ricevere una piccola commissione, senza costi in più per te. L'app non condivide i tuoi dati con questi siti.
+
+I tuoi diritti
+--------------
+Puoi eliminare le carte dalla collezione in qualsiasi momento. Nelle impostazioni puoi uscire dall'account oppure eliminarlo: l'account e tutti i dati salvati online vengono cancellati subito (la collezione sul telefono resta). Per qualsiasi altra richiesta prevista dal GDPR (accesso, rettifica, cancellazione), scrivi all'indirizzo email qui sotto.
+
+Eliminare l'account
+-------------------
+Nell'app: Impostazioni → Account e salvataggio online → Elimina account e dati online (cancella subito tutto ciò che è online). Senza l'app: scrivi a collectorone.support@gmail.com dall'email del tuo account, cancelliamo tutto entro 30 giorni.
+
+Minori
+------
+CollectorOne non è rivolta a minori di 13 anni e non raccoglie consapevolmente i loro dati.
+
+Contatti
+--------
+Email: collectorone.support@gmail.com
+
+
+PRIVACY POLICY
+==============
+
+Last updated: 5 November 2026
+CollectorOne is an app for tracking Pokémon, One Piece, Lorcana, Dragon Ball and Yu-Gi-Oh! trading card collections. This page explains what data the app uses and why. In short: no ads, no tracking, no data sold to anyone.
+
+Without an account
+------------------
+You can use CollectorOne without signing in. Your collection, settings and value history are stored only on your phone.
+
+With an account (optional)
+--------------------------
+If you sign in with Google or Apple to save your collection online, we store:
+
+- your account identifier, your name and the email address provided by Google or Apple (with Apple you can hide your real email);
+- the cards in your collection (card, language, condition, variant, quantity, grade, prices), the daily value history and your progress (trophies, missions, check-in streak, chosen theme);
+- if you use invites: your invite code, who invited you, Pro days received as a gift and, for the friends leaderboard, your first name, number of cards, completed sets and level, visible only to friends linked to you by an invite.
+
+This data is kept on Supabase servers in the European Union (Frankfurt) and each user can only access their own data. It is used only to sync your collection across devices.
+
+Camera and card scanning
+------------------------
+Scanning uses the camera only while you are scanning. With "Text" and "Photo match" everything happens on your phone and the photo is never uploaded. With "AI" the cropped photo of the card is sent to our scanning service (Supabase), which has it read by Claude (Anthropic): the photo is not stored, neither by us nor for training; for the daily limit the service keeps only a random code of the app and the time of each scan. On Android the last scan stays only in the app's temporary storage, replaced by the next one.
+
+Services the app contacts
+-------------------------
+
+- TCGdex: card data and images.
+- Supabase: price files updated every night.
+- CardTrader: One Piece, Lorcana, Dragon Ball and Yu-Gi-Oh! card images.
+- Our graded price service (Supabase): receives only the product number of the card, to return graded card prices.
+- Our variant photo service (Supabase, eBay Browse API): receives only the card name, number and variant.
+
+These requests contain no personal data.
+
+Purchases
+---------
+CollectorOne Pro is bought through the App Store or Google Play. Payments are handled entirely by Apple or Google: we never see your payment details. The app only checks with the store whether Pro is active.
+
+External links and affiliate links
+----------------------------------
+Buttons to eBay, Cardmarket and CardTrader open those websites, which have their own privacy policies. Some of these links may be affiliate links: if you buy something after opening them, CollectorOne may earn a small commission at no extra cost to you. The app does not share your data with these sites.
+
+Your rights
+-----------
+You can delete cards from your collection at any time. In the settings you can sign out, or delete your online account: this immediately erases the account and all the data saved online (the collection on your phone stays). For any other request under the GDPR (access, correction, deletion), write to the email address below.
+
+Deleting your account
+---------------------
+In the app: Settings → Account and online backup → Delete account and online data (erases everything online immediately). Without the app: write to collectorone.support@gmail.com from your account's email, we delete everything within 30 days.
+
+Children
+--------
+CollectorOne is not directed at children under 13 and does not knowingly collect their data.
+
+Contact
+-------
+Email: collectorone.support@gmail.com

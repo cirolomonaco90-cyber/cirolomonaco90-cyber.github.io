@@ -1,0 +1,54 @@
+name: Esplora CardTrader
+
+# Solo a mano: stampa nel log com'è fatto un gioco su CardTrader (giochi, espansioni, proprietà dei blueprint
+# e delle offerte), per preparare i prezzi di un nuovo gioco nell'app. Non scrive niente.
+#   gh workflow run esplora.yml -R cirolomonaco90-cyber/cirolomonaco90-cyber.github.io -f gioco="dragon ball"
+
+on:
+  workflow_dispatch:
+    inputs:
+      gioco:
+        description: "Parte del nome del gioco su CardTrader (es. dragon ball, digimon)"
+        default: "dragon ball"
+        required: true
+      espansioni:
+        description: "Con 'catalogo': quante espansioni leggere (vuoto = tutte), per una prova veloce"
+        default: ""
+        required: false
+      catalogo:
+        description: "Chiave del gioco in CT_GAME_FILES (onepiece, lorcana, dragonball, yugioh) per costruirne i file come artefatto; vuoto = solo esplorare"
+        default: ""
+        required: false
+
+jobs:
+  esplora:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Com'è fatto il gioco su CardTrader
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+        run: node prezzi/src/esplora-gioco.js "${{ github.event.inputs.gioco }}"
+      - name: Catalogo e sigillati del gioco (artefatto)
+        if: ${{ github.event.inputs.catalogo != '' }}
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          CATALOGO: ${{ github.event.inputs.catalogo }}
+          ESPANSIONI: ${{ github.event.inputs.espansioni }}
+        run: |
+          mkdir -p catalogo
+          node --input-type=module -e "
+            import { CardTrader } from './prezzi/src/cardtrader.js';
+            import { buildCtGameFiles } from './prezzi/src/ct-giochi.js';
+            const log = await buildCtGameFiles({ ct: new CardTrader({ token: process.env.CARDTRADER_TOKEN }), dir: 'catalogo', only: [process.env.CATALOGO], maxExpansions: Number(process.env.ESPANSIONI) || Infinity });
+            console.log(log.join('\\n'));
+          "
+      - uses: actions/upload-artifact@v4
+        if: ${{ github.event.inputs.catalogo != '' }}
+        with:
+          name: catalogo
+          path: catalogo

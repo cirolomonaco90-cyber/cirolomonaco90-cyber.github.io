@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CollectorOne</title>
+  <meta name="description" content="CollectorOne nel browser: la tua collezione di carte Pokémon, One Piece, Lorcana, Dragon Ball e Yu-Gi-Oh!, con i prezzi per lingua.">
+  <meta name="theme-color" content="#4338CA">
+  <link rel="icon" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #F3F1FA; }
+    @media (prefers-color-scheme: dark) { html, body { background: #14121B; } }
+    #loading {
+      position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #4338CA;
+      background: linear-gradient(135deg, #3B4CCA 0%, #8B3FD9 100%); color: #fff; text-align: center; padding: 16px;
+    }
+    #loading .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,.35); border-top-color: #fff;
+      border-radius: 50%; animation: spin 1s linear infinite; }
+    #loading h1 { margin: 0; font-size: 28px; }
+    #loading p { margin: 0; opacity: .85; max-width: 420px; line-height: 1.4; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+  <script src="web.js?v=1794067479"></script>
+  <script type="application/javascript" src="collectorone.js?v=1794067479"></script>
+</head>
+<body>
+  <div id="loading">
+    <div class="spinner"></div>
+    <h1>CollectorOne</h1>
+    <p id="loading-text">Caricamento dell'app…</p>
+  </div>
+  <script>
+    // Browser troppo vecchi per WebAssembly GC: messaggio invece della pagina vuota.
+    (function () {
+      var ok = typeof WebAssembly === "object";
+      try { ok = ok && WebAssembly.validate(new Uint8Array([0,97,115,109,1,0,0,0,1,5,1,95,1,120,0])); } catch (e) { ok = false; }
+      if (!ok) document.getElementById("loading-text").textContent =
+        "Questo browser è troppo vecchio per CollectorOne: aggiorna Chrome, Edge, Firefox o Safari (versione 18.2 o successiva).";
+      setTimeout(function () {
+        var el = document.getElementById("loading");
+        if (el && ok) document.getElementById("loading-text").textContent =
+          "Sto ancora caricando… Se resta così, aggiorna il browser o prova con Chrome.";
+      }, 25000);
+    })();
+  </script>
+</body>
+</html>
