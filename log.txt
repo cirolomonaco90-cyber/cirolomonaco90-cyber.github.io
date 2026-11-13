@@ -1,0 +1,84 @@
+Espansioni Pokémon su CardTrader: 861
+Categorie dei blueprint (id: quantità): 69: 435, 59: 379, 60: 685, 68: 278, 61: 617, 62: 406, 63: 220, 64: 153, 65: 150, 86: 73, 66: 377, 118: 234, 78: 338, 190: 152, 73: 63457, 67: 327, 74: 52, 136: 12, 318: 1; carte singole = 73
+Espansioni con carte collegate a Cardmarket: 764, prodotti: 63489
+en: 25506 prodotti con offerte, 1ª edizione 4.322× la unlimited su 342 carte (10 set) (riferimento)
+it: 22601 prodotti con offerte, 1ª edizione 3.919× la unlimited su 243 carte (8 set), rapporto con l'inglese 72% su 13800 carte (almeno 15 offerte)
+fr: 10060 prodotti con offerte, rapporto con l'inglese 152% su 434 carte (almeno 5 offerte)
+de: 14451 prodotti con offerte, 1ª edizione 3.684× la unlimited su 3 carte (0 set), rapporto con l'inglese 127% su 2015 carte (almeno 8 offerte)
+es: 11953 prodotti con offerte, 1ª edizione 2.22× la unlimited su 5 carte (1 set), rapporto con l'inglese 117% su 705 carte (almeno 8 offerte)
+pt: 982 prodotti con offerte, rapporto con l'inglese 247% su 42 carte (almeno 3 offerte)
+fr: rapporto con l'inglese preso dall'italiano, 72% su 13800 carte
+es: rapporto con l'inglese preso dall'italiano, 72% su 13800 carte
+pt: rapporto con l'inglese preso dall'italiano, 72% su 13800 carte
+de: rapporto con l'inglese preso dall'italiano, 72% su 13800 carte
+Sigillati su CardTrader: 4889 blueprint collegati a Cardmarket, 30 espansioni in più da leggere
+Lorcana: 29 espansioni con carte, 3830 carte
+Lorcana: 0 carte senza foto con quella di un'altra stampa (restano 1)
+Lorcana en: 3738 carte con offerte
+Lorcana fr: 2723 carte con offerte
+Lorcana de: 3117 carte con offerte
+Lorcana it: 3201 carte con offerte
+Lorcana es: 16 carte con offerte
+Lorcana jp: 1307 carte con offerte
+Lorcana: 3 stime con una o due offerte scartate (oltre 10 volte le altre lingue o 20 volte le carte del set)
+Lorcana rapporto de/en: 117% su 44 carte
+Lorcana rapporto it/en: 79% su 280 carte
+Lorcana rapporto fr/en: quello dell'italiano
+Lorcana rapporto es/en: quello dell'italiano
+Lorcana rapporto de/en: quello dell'italiano
+Lorcana gradate: 478 carte di valore lette, 28 con offerte gradate riconoscibili
+Lorcana Sealed su CardTrader: 358 blueprint collegati a Cardmarket
+lorcana: 3511 carte su 3830 con il prodotto TCGplayer (21 gruppi)
+Lorcana Sigillati solo su CardTrader: 0
+Lorcana Foto CardTrader per nome (sigillati non collegati a Cardmarket: 41): 6
+Lorcana   di cui per somiglianza del nome: 13
+Lorcana Foto TCGplayer per i sigillati senza foto: 13 (restano senza 116)
+Lorcana Prodotto TCGplayer dei sigillati (per l'andamento): 140 su 304
+Lorcana Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 39)
+Lorcana Sigillati: 304 prodotti (26 asiatici), 263 con prezzo Cardmarket, 132 con offerte CardTrader, 188 con foto, 304 con il nome dell'espansione
+Dragon Ball: 170 espansioni con carte, 14584 carte
+Dragon Ball: 579 carte senza foto con quella di un'altra stampa (restano 9)
+Dragon Ball en: 7700 carte con offerte
+Dragon Ball jp: 1060 carte con offerte
+Dragon Ball: 5 stime con una o due offerte scartate (oltre 10 volte le altre lingue o 20 volte le carte del set)
+Dragon Ball gradate: 579 carte di valore lette, 14 con offerte gradate riconoscibili
+Dragon Ball Sealed su CardTrader: 501 blueprint collegati a Cardmarket
+dragonball: 8989 carte su 14584 con il prodotto TCGplayer (161 gruppi)
+Dragon Ball Sigillati doppi senza prezzo né foto tolti: 7
+Dragon Ball Sigillati solo su CardTrader: 0
+Dragon Ball Foto CardTrader per nome (sigillati non collegati a Cardmarket: 181): 27
+Dragon Ball   di cui per somiglianza del nome: 28
+Dragon Ball   prodotti TCGplayer senza foto, lasciati alle altre fonti: 6
+Dragon Ball Foto TCGplayer per i sigillati senza foto: 60 (restano senza 100)
+Dragon Ball Prodotto TCGplayer dei sigillati (per l'andamento): 254 su 546
+Dragon Ball Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 35)
+Dragon Ball Sigillati: 546 prodotti (20 asiatici), 506 con prezzo Cardmarket, 167 con offerte CardTrader, 446 con foto, 528 con il nome dell'espansione
+One Piece: 95 espansioni con carte, 7876 carte
+One Piece: 2 carte senza foto con quella di un'altra stampa (restano 0)
+One Piece en: 6971 carte con offerte
+One Piece jp: 4854 carte con offerte
+One Piece: 9 stime con una o due offerte scartate (oltre 10 volte le altre lingue o 20 volte le carte del set)
+One Piece rapporto jp/en: 67% su 599 carte
+One Piece gradate: 1750 carte di valore lette, 515 con offerte gradate riconoscibili
+One Piece Sealed su CardTrader: 652 blueprint collegati a Cardmarket
+onepiece: 4485 carte su 7876 con il prodotto TCGplayer (87 gruppi)
+One Piece Sigillati doppi senza prezzo né foto tolti: 1
+One Piece Sigillati solo su CardTrader: 0
+One Piece Foto CardTrader per nome (sigillati non collegati a Cardmarket: 274): 40
+One Piece   di cui per somiglianza del nome: 47
+One Piece   prodotti TCGplayer senza foto, lasciati alle altre fonti: 3
+One Piece Foto TCGplayer per i sigillati senza foto: 71 (restano senza 102)
+One Piece Prodotto TCGplayer dei sigillati (per l'andamento): 313 su 629
+One Piece Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 15)
+One Piece Sigillati: 629 prodotti (151 asiatici), 610 con prezzo Cardmarket, 319 con offerte CardTrader, 527 con foto, 603 con il nome dell'espansione
+Sigillati doppi senza prezzo né foto tolti: 54
+Sigillati solo su CardTrader: 2170 (86 doppioni di prodotti Cardmarket scartati)
+Foto CardTrader per nome (sigillati non collegati a Cardmarket: 931): 86
+  di cui per somiglianza del nome: 484
+  prodotti TCGplayer senza foto, lasciati alle altre fonti: 10
+Foto TCGplayer per i sigillati senza foto: 592 (restano senza 996)
+Prodotto TCGplayer dei sigillati (per l'andamento): 2451 su 6475
+Prezzo TCGplayer per i sigillati senza prezzo: 19 (restano senza 2309)
+Rapporto sigillati lingua/inglese: it 72% (119 prodotti), fr 72% (119 prodotti), de 72% (119 prodotti), es 72% (119 prodotti), pt 72% (119 prodotti)
+Sigillati: 6475 prodotti (1493 asiatici), 3756 con prezzo Cardmarket, 1621 con offerte CardTrader, 5479 con foto, 6341 con il nome dell'espansione
+Fatto in 217 minuti, 8196 chiamate a CardTrader, tempo della notte finito: 1710 letture di offerte prese dai giorni prima, 11 rimandate alla prossima notte (mai lette nei giorni prima).
