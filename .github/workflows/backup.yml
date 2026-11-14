@@ -1,0 +1,33 @@
+name: Backup del database
+
+# Ogni notte: copia del database di Supabase (account, collezioni, classifica) in uno spazio privato di Cloudflare R2,
+# tenuta 30 giorni (scripts/backup-db.sh). Il piano gratuito di Supabase non fa backup.
+# Segreti del repo: SUPABASE_DB_URL, R2_ACCOUNT_ID, R2_BACKUP_ACCESS_KEY_ID, R2_BACKUP_SECRET_ACCESS_KEY (li imposta
+# l'utente con scripts/chiavi-backup.sh). I registri sono pubblici: lo script stampa solo esito e dimensioni.
+# Se fallisce GitHub manda un'email. Solo a orario o a mano: mai da richieste di altri.
+
+on:
+  schedule:
+    - cron: "20 4 * * *" # 04:20 UTC, ogni giorno
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backup-db
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_BACKUP_ACCESS_KEY_ID: ${{ secrets.R2_BACKUP_ACCESS_KEY_ID }}
+      R2_BACKUP_SECRET_ACCESS_KEY: ${{ secrets.R2_BACKUP_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Backup del database
+        run: bash scripts/backup-db.sh
