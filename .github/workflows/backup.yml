@@ -1,0 +1,68 @@
+name: Backup del database
+# Titolo del giro: "(notte)" se lo avvia il Worker di Cloudflare collectorone-avvii (appena finito il giro dei dati
+# notturni, al più tardi alle 10:00 UTC), "(riserva)" se lo avvia l'orario di GitHub, "(a mano)" negli altri casi.
+run-name: Backup del database (${{ inputs.avvio || 'riserva' }})
+
+# Ogni notte: copia del database di Supabase (account, collezioni, classifica) in uno spazio privato di Cloudflare R2,
+# tenuta 30 giorni (scripts/backup-db.sh). Il piano gratuito di Supabase non fa backup. Poi copia dei file di R2 che non
+# si possono rifare (storico dei prezzi, foto e loghi: scripts/backup-file.py) nello stesso spazio privato.
+# Segreti del repo: SUPABASE_DB_URL, R2_ACCOUNT_ID, R2_BACKUP_ACCESS_KEY_ID, R2_BACKUP_SECRET_ACCESS_KEY (li imposta
+# l'utente con scripts/chiavi-backup.sh). I registri sono pubblici: lo script stampa solo esito e dimensioni.
+# Se fallisce GitHub manda un'email. Solo a orario o a mano: mai da richieste di altri.
+
+on:
+  schedule:
+    # Solo RISERVA (19 novembre 2026, deciso dall'utente): il backup lo avvia il Worker di Cloudflare collectorone-avvii.
+    # Questo orario parte solo se oggi non c'è già un backup "(notte)" o "(riserva)" (primo passo del job).
+    - cron: "30 13 * * *"
+  workflow_dispatch:
+    inputs:
+      avvio:
+        description: "Chi lo avvia: notte (Worker di Cloudflare) o a mano"
+        type: string
+        default: "a mano"
+
+permissions:
+  contents: read
+  actions: read # controllo della riserva: backup di oggi già fatto?
+
+concurrency:
+  group: backup-db
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_BACKUP_ACCESS_KEY_ID: ${{ secrets.R2_BACKUP_ACCESS_KEY_ID }}
+      R2_BACKUP_SECRET_ACCESS_KEY: ${{ secrets.R2_BACKUP_SECRET_ACCESS_KEY }}
+    steps:
+      - name: Backup di oggi già fatto?
+        id: c
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENTO: ${{ github.event_name }}
+        run: |
+          fai=1
+          if [ "$EVENTO" = schedule ]; then
+            oggi=$(date -u +%F)
+            n=$(gh api "repos/${{ github.repository }}/actions/workflows/backup.yml/runs?created=%3E%3D$oggi&per_page=50" \
+              --jq '[.workflow_runs[] | select(.id != ${{ github.run_id }}) | select(.display_title | test("[(](notte|riserva)[)]$"))] | length')
+            if [ "${n:-0}" -gt 0 ]; then fai=0; echo "Backup di oggi già fatto ($n): la riserva non riparte."; fi
+          fi
+          echo "fai=$fai" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        if: steps.c.outputs.fai == '1'
+      - name: Backup del database
+        if: steps.c.outputs.fai == '1'
+        run: bash scripts/backup-db.sh
+      - name: Copia dello storico dei prezzi, delle foto e dei loghi
+        if: always() && steps.c.outputs.fai == '1'
+        run: python3 scripts/backup-file.py
+        env:
+          # Solo per leggere l'elenco dei file pubblici (i file si scaricano dall'indirizzo pubblico).
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

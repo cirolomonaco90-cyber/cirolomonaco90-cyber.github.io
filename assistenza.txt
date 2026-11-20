@@ -1,0 +1,48 @@
+CollectorOne — Assistenza e suggerimenti / Support and feedback
+
+Per domande, problemi, richieste sui tuoi dati, ma anche idee e suggerimenti
+per nuove funzionalità, scrivi allo sviluppatore:
+For questions, problems, requests about your data, and also ideas and
+suggestions for new features, write to the developer:
+
+collectorone.support@gmail.com
+
+Rispondiamo di solito entro 2 giorni lavorativi. Ogni suggerimento viene letto.
+We usually reply within 2 working days. Every suggestion is read.
+
+Dall'app: Impostazioni → in fondo → "Scrivi all'assistenza" o "Suggerisci un'idea".
+From the app: Settings → at the bottom → "Contact support" or "Suggest an idea".
+
+ELIMINARE L'ACCOUNT CollectorOne (sviluppatore: CollectorOne)
+-------------------------------------------------------------
+1. Dall'app: Impostazioni → Account e salvataggio online → "Elimina account e dati online" → Elimina.
+   L'account viene cancellato subito.
+2. Senza l'app: scrivi a collectorone.support@gmail.com dall'indirizzo email dell'account,
+   con oggetto "Elimina account". Lo cancelliamo entro 30 giorni e ti confermiamo per email.
+
+Cosa viene cancellato, subito e per sempre: l'account (identificativo, nome, email), le carte della
+collezione salvate online, lo storico del valore, trofei, missioni e livello, il codice invito, gli
+inviti, i giorni di Pro regalati e i dati della classifica tra amici.
+Cosa resta: niente sui nostri server. La collezione sul telefono resta finché non disinstalli l'app.
+Gli acquisti di Pro sono registrati da Apple o Google (non da noi): un abbonamento va annullato
+dalle impostazioni dell'App Store o di Google Play, perché eliminare l'account non lo disdice.
+
+DELETING YOUR CollectorOne ACCOUNT (developer: CollectorOne)
+------------------------------------------------------------
+1. In the app: Settings → Account and online backup → "Delete account and online data" → Delete.
+   The account is deleted immediately.
+2. Without the app: email collectorone.support@gmail.com from your account's email address,
+   with subject "Delete account". We delete it within 30 days and confirm by email.
+
+Deleted immediately and permanently: the account (identifier, name, email), the collection cards
+saved online, value history, trophies, missions and level, invite code, invites, gifted Pro days
+and friends leaderboard data.
+Kept: nothing on our servers. The collection on your phone stays until you uninstall the app.
+Pro purchases are recorded by Apple or Google (not by us): cancel a subscription in your App Store
+or Google Play settings, as deleting the account does not cancel it.
+
+Abbonamenti Pro: si gestiscono e si annullano dalle impostazioni del tuo account App Store o Google Play.
+Pro subscriptions: manage or cancel them in your App Store or Google Play account settings.
+
+Informativa privacy / Privacy policy:
+https://lafgthxgasunkxrgwqng.supabase.co/storage/v1/object/public/dati/sito/privacy.txt
