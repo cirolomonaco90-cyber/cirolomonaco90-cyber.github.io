@@ -1,0 +1,111 @@
+Espansioni Pokémon su CardTrader: 861
+Categorie dei blueprint (id: quantità): 69: 435, 59: 379, 60: 686, 68: 278, 61: 620, 62: 406, 63: 220, 64: 153, 65: 152, 86: 73, 66: 378, 118: 234, 78: 340, 190: 152, 73: 63479, 67: 327, 74: 52, 136: 12, 318: 1; carte singole = 73
+Espansioni con carte collegate a Cardmarket: 765, prodotti: 63511
+en: 25659 prodotti con offerte, 1ª edizione 4.334× la unlimited su 354 carte (10 set) (riferimento)
+it: 22609 prodotti con offerte, 1ª edizione 3.616× la unlimited su 236 carte (8 set), rapporto con l'inglese 69% su 14226 carte (almeno 15 offerte)
+fr: 10572 prodotti con offerte, rapporto con l'inglese 146% su 441 carte (almeno 5 offerte)
+de: 14840 prodotti con offerte, 1ª edizione 4.32× la unlimited su 4 carte (0 set), rapporto con l'inglese 127% su 257 carte (almeno 15 offerte)
+es: 11985 prodotti con offerte, 1ª edizione 2.039× la unlimited su 4 carte (0 set), rapporto con l'inglese 115% su 654 carte (almeno 8 offerte)
+pt: 983 prodotti con offerte, rapporto con l'inglese 262% su 42 carte (almeno 3 offerte)
+fr: rapporto con l'inglese preso dall'italiano, 69% su 14226 carte
+es: rapporto con l'inglese preso dall'italiano, 69% su 14226 carte
+pt: rapporto con l'inglese preso dall'italiano, 69% su 14226 carte
+de: rapporto con l'inglese preso dall'italiano, 69% su 14226 carte
+Sigillati su CardTrader: 4898 blueprint collegati a Cardmarket, 29 espansioni in più da leggere
+One Piece: 95 espansioni con carte, 8063 carte
+One Piece: 2 carte senza foto con quella di un'altra stampa (restano 0)
+One Piece en: 7128 carte con offerte
+One Piece jp: 4939 carte con offerte
+One Piece: 3 prezzi "per non vendere" ripetuti su carte diverse (5501, 7501, 9998 €), 21 stime rifatte senza
+One Piece: 7 stime scartate (una o due offerte oltre 10 volte le altre lingue o 20 volte le carte del set; tre o più offerte oltre 30 volte le altre lingue)
+One Piece rapporto jp/en: 69% su 560 carte
+One Piece gradate: 1752 carte di valore lette, 524 con offerte gradate riconoscibili
+One Piece Sealed su CardTrader: 658 blueprint collegati a Cardmarket
+onepiece: 416 carte senza prodotto TCGplayer perché lo stesso prodotto era di un'altra carta
+onepiece: 4027 carte col prezzo di mercato TCGplayer (54 prezzi di mercato scartati: sotto un terzo dell'inserzione più economica)
+onepiece: 4081 carte su 8063 con il prodotto TCGplayer (88 gruppi)
+One Piece: 7480 carte con la tendenza Cardmarket
+One Piece Lingua corretta dalle offerte: 0 prodotti giapponesi, 3 occidentali
+One Piece Sigillati doppi senza prezzo né foto tolti: 2
+One Piece Sigillati solo su CardTrader: 0, 0 con la tendenza del listino Cardmarket
+One Piece Tendenze Cardmarket non credibili (segnaposto o sotto 1 € col minimo dieci volte più su) scartate: 4
+One Piece Foto CardTrader per nome (sigillati non collegati a Cardmarket: 274): 40
+One Piece   di cui per somiglianza del nome: 45
+One Piece   prodotti TCGplayer senza foto, lasciati alle altre fonti: 2
+One Piece Foto TCGplayer per i sigillati senza foto: 68 (restano senza 108)
+One Piece Prodotto TCGplayer dei sigillati: 2 tolti perché la confezione è diversa (vuota, mezzo box, carte per busta, cassa)
+One Piece Prodotto TCGplayer dei sigillati: 4 tolti perché lo stesso prodotto era di un altro sigillato
+One Piece Prodotto TCGplayer dei sigillati (per l'andamento): 302 su 635
+One Piece Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 20)
+One Piece Sigillati: 635 prodotti (148 asiatici), 609 con prezzo Cardmarket, 326 con offerte CardTrader, 527 con foto, 609 con il nome dell'espansione
+Lorcana: 30 espansioni con carte, 3830 carte
+Lorcana: 0 carte senza foto con quella di un'altra stampa (restano 1)
+Lorcana: 3092 carte normali e foil (stima della foil a parte), 738 in una sola finitura (tutte le offerte)
+Lorcana en: 3751 carte con offerte
+Lorcana fr: 2668 carte con offerte
+Lorcana de: 3070 carte con offerte
+Lorcana it: 3205 carte con offerte
+Lorcana es: 15 carte con offerte, 1 espansioni non lette
+Lorcana jp: 1306 carte con offerte, 1 espansioni non lette
+Lorcana: 4 stime scartate (una o due offerte oltre 10 volte le altre lingue o 20 volte le carte del set; tre o più offerte oltre 30 volte le altre lingue)
+Lorcana rapporto de/en: 121% su 34 carte
+Lorcana rapporto it/en: 76% su 293 carte
+Lorcana rapporto fr/en: quello dell'italiano
+Lorcana rapporto es/en: quello dell'italiano
+Lorcana rapporto de/en: quello dell'italiano
+Lorcana rapporto foil/normale: 2.636 su 2835 carte
+Lorcana gradate: 501 carte di valore lette, 27 con offerte gradate riconoscibili
+Lorcana Sealed su CardTrader: 358 blueprint collegati a Cardmarket
+lorcana: 27 carte senza prodotto TCGplayer perché lo stesso prodotto era di un'altra carta
+lorcana: 3463 carte col prezzo di mercato TCGplayer (4 prezzi di mercato scartati: sotto un terzo dell'inserzione più economica)
+lorcana: 3486 carte su 3830 con il prodotto TCGplayer (21 gruppi)
+Lorcana: 3647 carte con la tendenza Cardmarket
+Lorcana Sigillati solo su CardTrader: 0, 0 con la tendenza del listino Cardmarket
+Lorcana Tendenze Cardmarket non credibili (segnaposto o sotto 1 € col minimo dieci volte più su) scartate: 2
+Lorcana Foto CardTrader per nome (sigillati non collegati a Cardmarket: 41): 6
+Lorcana   di cui per somiglianza del nome: 13
+Lorcana Foto TCGplayer per i sigillati senza foto: 13 (restano senza 116)
+Lorcana Prodotto TCGplayer dei sigillati (per l'andamento): 140 su 304
+Lorcana Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 40)
+Lorcana Sigillati: 304 prodotti (26 asiatici), 262 con prezzo Cardmarket, 133 con offerte CardTrader, 188 con foto, 304 con il nome dell'espansione
+Dragon Ball: 171 espansioni con carte, 14787 carte
+Dragon Ball: 597 carte senza foto con quella di un'altra stampa (restano 9)
+Dragon Ball: 4277 carte normali e foil (stima della foil a parte), 10510 in una sola finitura (tutte le offerte)
+Dragon Ball en: 12073 carte con offerte
+Dragon Ball jp: 1940 carte con offerte
+Dragon Ball: 1 prezzi "per non vendere" ripetuti su carte diverse (10303 €), 8 stime rifatte senza
+Dragon Ball: 11 stime scartate (una o due offerte oltre 10 volte le altre lingue o 20 volte le carte del set; tre o più offerte oltre 30 volte le altre lingue)
+Dragon Ball rapporto jp/en: 95% su 170 carte
+Dragon Ball rapporto foil/normale: 3.75 su 1567 carte
+Dragon Ball gradate: 1544 carte di valore lette, 64 con offerte gradate riconoscibili
+Dragon Ball Sealed su CardTrader: 504 blueprint collegati a Cardmarket
+dragonball: 330 carte senza prodotto TCGplayer perché lo stesso prodotto era di un'altra carta
+dragonball: 8480 carte col prezzo di mercato TCGplayer (192 prezzi di mercato scartati: sotto un terzo dell'inserzione più economica)
+dragonball: 9008 carte su 14787 con il prodotto TCGplayer (162 gruppi)
+Dragon Ball: 11102 carte con la tendenza Cardmarket
+Dragon Ball Sigillati doppi senza prezzo né foto tolti: 7
+Dragon Ball Sigillati solo su CardTrader: 0, 0 con la tendenza del listino Cardmarket
+Dragon Ball Tendenze Cardmarket non credibili (segnaposto o sotto 1 € col minimo dieci volte più su) scartate: 4
+Dragon Ball Foto CardTrader per nome (sigillati non collegati a Cardmarket: 180): 27
+Dragon Ball   di cui per somiglianza del nome: 28
+Dragon Ball   prodotti TCGplayer senza foto, lasciati alle altre fonti: 6
+Dragon Ball Foto TCGplayer per i sigillati senza foto: 60 (restano senza 100)
+Dragon Ball Prodotto TCGplayer dei sigillati (per l'andamento): 257 su 549
+Dragon Ball Prezzo TCGplayer per i sigillati senza prezzo: 0 (restano senza 35)
+Dragon Ball Sigillati: 549 prodotti (20 asiatici), 505 con prezzo Cardmarket, 179 con offerte CardTrader, 449 con foto, 531 con il nome dell'espansione
+Lingua corretta dalle offerte: 5 prodotti giapponesi, 1 occidentali
+Sigillati doppi senza prezzo né foto tolti: 54
+Sigillati solo su CardTrader: 2178 (85 doppioni di prodotti Cardmarket scartati), 814 con la tendenza del listino Cardmarket
+Tendenze Cardmarket non credibili (segnaposto o sotto 1 € col minimo dieci volte più su) scartate: 16
+Tendenze tolte perché il box varrebbe meno di una sua busta: 16 (Dragons Exalted Booster Box; Dragons Exalted Booster; EX Delta Species Booster Box; EX Deoxys Booster Box; EX Deoxys Booster)
+Foto CardTrader per nome (sigillati non collegati a Cardmarket: 930): 86
+  di cui per somiglianza del nome: 486
+  prodotti TCGplayer senza foto, lasciati alle altre fonti: 10
+Foto TCGplayer per i sigillati senza foto: 595 (restano senza 1014)
+Prodotto TCGplayer dei sigillati: 343 tolti perché la confezione è diversa (vuota, mezzo box, carte per busta, cassa)
+Prodotto TCGplayer dei sigillati: 29 tolti perché lo stesso prodotto era di un altro sigillato
+Prodotto TCGplayer dei sigillati (per l'andamento): 2083 su 6506
+Prezzo TCGplayer per i sigillati senza prezzo: 9 (restano senza 1786)
+Rapporto sigillati lingua/inglese: it 72% (113 prodotti), fr 72% (113 prodotti), de 72% (113 prodotti), es 72% (113 prodotti), pt 72% (113 prodotti)
+Sigillati: 6506 prodotti (1507 asiatici), 4549 con prezzo Cardmarket, 1583 con offerte CardTrader, 5492 con foto, 6370 con il nome dell'espansione
+Fatto in 268 minuti, 8478 chiamate a CardTrader, tempo della notte finito: 2436 letture di offerte prese dai giorni prima, 3 rimandate alla prossima notte (mai lette nei giorni prima).
