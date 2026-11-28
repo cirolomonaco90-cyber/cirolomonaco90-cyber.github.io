@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /cdn-cgi/
+
+Sitemap: https://collectorone.app/sitemap.xml

@@ -1,0 +1,58 @@
+name: Esplora CardTrader
+
+# Solo a mano: stampa nel log com'è fatto un gioco su CardTrader (giochi, espansioni, proprietà dei blueprint
+# e delle offerte), per preparare i prezzi di un nuovo gioco nell'app. Non scrive niente.
+#   gh workflow run esplora.yml -R cirolomonaco90-cyber/cirolomonaco90-cyber.github.io -f gioco="dragon ball"
+
+on:
+  workflow_dispatch:
+    inputs:
+      gioco:
+        description: "Parte del nome del gioco su CardTrader (es. dragon ball, digimon)"
+        default: "dragon ball"
+        required: true
+      espansioni:
+        description: "Con 'catalogo': quante espansioni leggere (vuoto = tutte), per una prova veloce"
+        default: ""
+        required: false
+      catalogo:
+        description: "Chiave del gioco in CT_GAME_FILES (onepiece, lorcana, dragonball, yugioh) per costruirne i file come artefatto; vuoto = solo esplorare"
+        default: ""
+        required: false
+
+jobs:
+  esplora:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Com'è fatto il gioco su CardTrader
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          # Il campo scritto a mano passa da una variabile, non dentro il comando (revisione del 19 novembre 2026).
+          GIOCO: ${{ github.event.inputs.gioco }}
+        run: node prezzi/src/esplora-gioco.js "$GIOCO"
+      - name: Catalogo e sigillati del gioco (artefatto)
+        if: ${{ github.event.inputs.catalogo != '' }}
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          CATALOGO: ${{ github.event.inputs.catalogo }}
+          ESPANSIONI: ${{ github.event.inputs.espansioni }}
+        run: |
+          mkdir -p catalogo
+          node --input-type=module -e "
+            import { CardTrader } from './prezzi/src/cardtrader.js';
+            import { buildCtGameFiles } from './prezzi/src/ct-giochi.js';
+            const log = await buildCtGameFiles({ ct: new CardTrader({ token: process.env.CARDTRADER_TOKEN }), dir: 'catalogo', only: [process.env.CATALOGO], maxExpansions: Number(process.env.ESPANSIONI) || Infinity });
+            console.log(log.join('\\n'));
+          "
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: ${{ github.event.inputs.catalogo != '' }}
+        with:
+          name: catalogo
+          path: catalogo
+          # Serve solo per guardarlo subito dopo il giro: una settimana e poi GitHub lo cancella.
+          retention-days: 7

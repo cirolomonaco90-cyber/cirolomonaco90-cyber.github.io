@@ -1,0 +1,372 @@
+name: Dati notturni
+# Titolo del giro con la parte: "(notte)" per quello della notte avviato dal Worker di Cloudflare collectorone-avvii (il
+# Worker conta solo quelli), "(riserva)" per quello avviato dall'orario di GitHub (dal 25 novembre 2026: col titolo
+# "(notte)" una riserva arrivata dopo la mezzanotte UTC fermava il Worker delle 01:50).
+run-name: Dati notturni (${{ inputs.parte || 'riserva' }})
+
+# Ogni notte, nella nuvola di GitHub (non serve il Mac): scripts/job-notte.sh carica su Supabase prezzi per
+# lingua, cataloghi (TCGplayer, One Piece, sigillati, oggetti), date dei set e correzioni Cardmarket;
+# il lunedì anche immagini di riserva e carte dei set asiatici. Le tre parti girano in parallelo.
+# Ripresa: la cartella ~/.collectorone (risposte CardTrader del giorno e dei giorni prima, carte TCGdex) resta nella
+# cache di Actions: se un job si ferma, "Re-run" lo stesso giorno continua da dove era arrivato.
+# Tempo: GitHub annulla un job a timeout-minutes senza pubblicare nulla, quindi ogni parte lunga si ferma da sola prima:
+# "prezzi" dopo PREZZI_MINUTI (290) non chiede più offerte a CardTrader e usa l'ultima lettura dei giorni prima,
+# Yu-Gi-Oh! lo stesso dopo YG_MINUTI (270), le carte TCGdex dopo SCAN_MINUTI, le impronte dopo IMPRONTE_MINUTI.
+# Secret del repo (Settings > Secrets and variables > Actions): CARDTRADER_TOKEN, SUPABASE_SECRET_KEY,
+# EBAY_APP_ID, EBAY_CERT_ID (oggetti da collezione; senza, restano col solo listino).
+# Esito di ogni parte: https://dati.collectorone.app/stato/<parte>.json (Cloudflare R2; su Supabase fino al 19 novembre 2026)
+# (lo scrive lo script anche in caso di errore). GitHub manda un'email ai fallimenti (impostazioni account).
+
+on:
+  schedule:
+    # Solo RISERVA (19 novembre 2026, deciso dall'utente: partenze precise, non gestite da GitHub): il giro della notte lo
+    # avvia il Worker di Cloudflare collectorone-avvii alle 01:50 UTC (worker/avvii). L'orologio di GitHub partiva con ore di
+    # ritardo (dal 14 novembre 6-8 ore). Questo orario parte solo dalle 04:00 UTC e se oggi non c'è già un giro "(notte)": job "controllo".
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      parte:
+        description: "Quale parte far girare"
+        type: choice
+        options: [notte, tutte, prezzi, yugioh, cardmarket, asia, immagini, storico, topps-libere, r2, indice]
+        default: tutte
+      prova:
+        description: "Prova veloce: poche espansioni e non carica nulla"
+        type: boolean
+        default: false
+      minuti:
+        description: "Yu-Gi-Oh!: minuti per le richieste di offerte (poi si pubblica; il resto la notte dopo)"
+        type: string
+        default: "270"
+      storico_solo:
+        description: "Parte storico: solo Cardmarket (cm) o solo TCGplayer (tp); vuoto = tutti e due"
+        type: string
+        default: ""
+      prefissi:
+        description: "Parte r2: cartelle da copiare da Supabase a Cloudflare R2, divise da spazi"
+        type: string
+        default: "prezzi/v1 carte/v1 giochi/v1 storico/v1 stato"
+      minuti_prezzi:
+        description: "Prezzi: minuti dall'inizio della parte per le richieste di offerte (poi quelle dei giorni prima)"
+        type: string
+        default: "290"
+
+concurrency:
+  group: dati-notturni
+  cancel-in-progress: false
+
+env:
+  # I segreti non stanno qui: ogni passo che lancia gli script del job li riceve per conto suo (12 novembre 2026),
+  # così i passi che installano pacchetti da internet (pip) non li vedono.
+  # Prova: 3 espansioni e nessun caricamento.
+  MAX_EXPANSIONS: ${{ inputs.prova && '3' || '' }}
+  YG_MINUTI: ${{ inputs.minuti || '270' }}
+  # Scadenza interna della parte "prezzi" (job-notte.sh): ben sotto i 350 minuti di timeout, con il tempo per pubblicare.
+  PREZZI_MINUTI: ${{ inputs.minuti_prezzi || '290' }}
+  SENZA_CARICARE: ${{ inputs.prova && '1' || '' }}
+  STORICO_SOLO: ${{ inputs.storico_solo || '' }}
+
+jobs:
+  controllo:
+    # Il giro della notte si fa una volta sola al giorno (UTC): la riserva di GitHub (schedule) non parte prima delle
+    # 04:00 UTC né se oggi c'è già un giro "(notte)" (avviato dal Worker). Gli avvii a mano partono sempre.
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+    outputs:
+      fai: ${{ steps.c.outputs.fai }}
+    steps:
+      - id: c
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENTO: ${{ github.event_name }}
+        run: |
+          fai=1
+          if [ "$EVENTO" = schedule ]; then
+            oggi=$(date -u +%F)
+            # La riserva di GitHub arriva con ore di ritardo, anche dopo la mezzanotte UTC (24 novembre 2026: partita alle
+            # 00:42 UTC, ha fatto il giro col listino Cardmarket del giorno prima e, col titolo "(notte)", ha fermato il
+            # Worker delle 01:50). Prima delle 04:00 UTC non parte mai: a quell'ora il Worker ha già avuto il suo turno.
+            if [ "$(date -u +%-H)" -lt 4 ]; then
+              fai=0; echo "Prima delle 04:00 UTC il giro lo avvia il Worker di Cloudflare: la riserva non parte."
+            else
+              # Già fatto oggi: un giro "(notte)" del Worker, o un'altra riserva partita dalle 04:00 UTC in poi.
+              n=$(gh api "repos/${{ github.repository }}/actions/workflows/prezzi.yml/runs?created=%3E%3D$oggi&per_page=50" \
+                --jq "[.workflow_runs[] | select(.id != ${{ github.run_id }}) | select((.display_title | endswith(\"(notte)\")) or ((.display_title | endswith(\"(riserva)\")) and .created_at >= \"${oggi}T04:00:00Z\"))] | length")
+              if [ "${n:-0}" -gt 0 ]; then fai=0; echo "Giro della notte già fatto oggi ($n): la riserva non riparte."; fi
+            fi
+          fi
+          echo "fai=$fai" >> "$GITHUB_OUTPUT"
+
+  prezzi:
+    needs: controllo
+    if: ${{ needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'prezzi') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - id: oggi
+        run: echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+      - name: Memoria del job (ripresa dello stesso giorno, offerte dei giorni prima, date dei set)
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: prezzi-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # Anche la memoria dei giorni prima: oltre la scadenza della notte (PREZZI_MINUTI) le offerte CardTrader non
+          # ancora lette si prendono dall'ultima lettura (job-notte.sh tiene le cartelle degli ultimi 6 giorni).
+          restore-keys: |
+            prezzi-${{ steps.oggi.outputs.data }}-
+            prezzi-
+      - name: Prezzi, cataloghi, date dei set
+        run: bash scripts/job-notte.sh prezzi
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+      - name: Salva la memoria del job
+        if: always()
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: prezzi-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  yugioh:
+    # Yu-Gi-Oh! a parte (691 espansioni × 7 lingue): non allunga la parte "prezzi" degli altri giochi.
+    needs: controllo
+    if: ${{ needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'yugioh') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - id: oggi
+        run: echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+      - name: Memoria del job (ripresa dello stesso giorno)
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: yugioh-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # Anche la memoria dei giorni prima: le offerte Yu-Gi-Oh! si leggono a rotazione (vedi job-notte.sh).
+          restore-keys: |
+            yugioh-${{ steps.oggi.outputs.data }}-
+            yugioh-
+      - name: Catalogo e sigillati Yu-Gi-Oh!
+        run: bash scripts/job-notte.sh yugioh
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+      - name: Salva la memoria del job
+        if: always()
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: yugioh-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  cardmarket:
+    needs: controllo
+    if: ${{ needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'cardmarket') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - id: oggi
+        run: echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+      - name: Memoria del job (carte TCGdex, ripresa dello stesso giorno)
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: cardmarket-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            cardmarket-${{ steps.oggi.outputs.data }}-
+            cardmarket-
+      - name: Correzioni Cardmarket
+        run: bash scripts/job-notte.sh cardmarket
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+      - name: Salva la memoria del job
+        if: always()
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.collectorone
+          key: cardmarket-${{ steps.oggi.outputs.data }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  storico:
+    # Solo a richiesta: lo storico da solo, coi giorni passati che mancano tutti in una volta (Cardmarket: il giorno di oggi
+    # per tutti i prodotti e le copie del listino nell'archivio di Internet; TCGplayer: gli archivi di tcgcsv.com).
+    # Ogni notte lo fanno le parti "cardmarket" e "prezzi", pochi giorni per volta.
+    if: ${{ inputs.parte == 'storico' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Storico Cardmarket e TCGplayer
+        run: bash scripts/job-notte.sh storico
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+
+  topps-libere:
+    # Solo a richiesta (ogni notte lo fa la parte "cardmarket"): prezzi eBay delle carte Topps aggiunte a mano dagli utenti
+    # (prezzi/src/topps-libere.js), per non aspettare la notte.
+    if: ${{ inputs.parte == 'topps-libere' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Prezzi delle carte libere Topps
+        run: bash scripts/job-notte.sh topps-libere
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+
+  r2:
+    # Solo a richiesta: copia su Cloudflare R2 i file già pubblicati su Supabase (scripts/copia-r2.sh). Si può rifare:
+    # i file già uguali non si scaricano.
+    if: ${{ inputs.parte == 'r2' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Copia su Cloudflare R2
+        run: bash scripts/copia-r2.sh $PREFISSI
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+          PREFISSI: ${{ inputs.prefissi }}
+
+  asia:
+    # Ogni notte: nessun set asiatico vuoto (carte da TCGplayer e dal sito ufficiale asiatico per i set che TCGdex ha
+    # senza carte). In errore se un set resta vuoto: guardare stato/asia.json.
+    needs: controllo
+    if: ${{ needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'asia') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Pillow (foto in piccolo delle carte del sito ufficiale)
+        run: pip3 install --quiet pillow
+      - name: Set asiatici vuoti
+        run: bash scripts/job-notte.sh asia
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+
+  immagini:
+    # Il lunedì (o a richiesta): immagini di riserva e carte dei set asiatici.
+    needs: controllo
+    if: ${{ needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'immagini') }}
+    runs-on: ubuntu-24.04
+    # 4 ore: le impronte si fermano da sole dopo 150 minuti e salvano (9 novembre 2026: con 2 ore il giro veniva annullato).
+    timeout-minutes: 240
+    permissions:
+      contents: write # branch di riserva
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Pillow e numpy (impronte delle carte per il confronto foto)
+        run: pip3 install --quiet pillow numpy
+      - name: Solo il lunedì se parte da sola
+        id: giorno
+        run: |
+          if { [ "${{ github.event_name }}" = schedule ] || [ "${{ inputs.parte }}" = notte ]; } && [ "$(date -u +%u)" != 1 ]; then echo "salta=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Immagini di riserva e set asiatici
+        if: steps.giorno.outputs.salta != '1' && inputs.prova != true
+        run: bash scripts/job-notte.sh immagini
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }} # branch di riserva "prezzi" e "immagini"
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Cloudflare R2 (dati-supabase.sh): senza questi tre segreti si carica solo su Supabase.
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EBAY_APP_ID: ${{ secrets.EBAY_APP_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
+
+  indice:
+    # Alla fine del giro, anche se una parte è andata male (19 novembre 2026): foto e loghi copiati su Cloudflare R2 (dal 26
+    # novembre) e indice dei file per l'app rifatto, così è giusto anche se due parti hanno finito insieme.
+    needs: [controllo, prezzi, yugioh, cardmarket, asia, immagini]
+    if: ${{ always() && needs.controllo.outputs.fai == '1' && ((github.event_name == 'schedule' || inputs.parte == 'notte') || inputs.parte == 'tutte' || inputs.parte == 'indice') && inputs.prova != true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Foto su Cloudflare e indice dei file
+        run: bash scripts/job-notte.sh indice
+        env:
+          CARDTRADER_TOKEN: ${{ secrets.CARDTRADER_TOKEN }} # non serve qui, ma job-notte.sh lo legge all'inizio
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
